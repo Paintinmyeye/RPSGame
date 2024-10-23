@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log("Hello World!");
+
+        
+
+        function getComputerChoice() {
+            let prob = Math.floor(Math.random()*3);
+
+            if (prob === 0) {
+                return 'Rock';
+            } else if ( prob === 1) {
+                return 'Paper';
+            } else {
+                return 'Scissors';
+            };
+            
+        };
+
+        function getHumanChoice() {
+            let choice = prompt("Rock, Paper, Scissors, Shoot!");
+
+            if (choice.toLowerCase() === 'rock') {
+                return 'Rock';
+            } else if (choice.toLowerCase() === 'paper') {
+                return 'Paper';
+            } else if (choice.toLowerCase() === 'scissors') {
+                return 'Scissors';
+            } else {
+                alert("I don't recognize that?")
+            };
+
+        };
+
+
+
+        
+        
+        function playGame() {
+            let humanScore = 0;
+            let computerScore = 0;
+
+            function playRound(humanChoice, computerChoice) {
+            if ((humanChoice === 'Rock' && computerChoice === 'Rock') 
+            || (humanChoice === 'Scissors' && computerChoice === 'Scissors') 
+            || (humanChoice === 'Paper' && computerChoice === 'Paper')) {
+                 alert('Tie!')
+            } else if (humanChoice === 'Rock' && computerChoice === 'Scissors') {
+                alert('Rock beats Scissors!'), humanScore++
+            } else if (humanChoice === 'Paper' && computerChoice === 'Rock') {
+                alert('Paper beats Rock!'), humanScore++
+            } else if (humanChoice === 'Scissors' && computerChoice === 'Paper') {
+                alert('Scissors beats Paper!'), humanScore++ 
+            } else if (humanChoice === 'Rock' && computerChoice === 'Paper') {
+                alert('Oh no! Paper beats Rock!'), computerScore++
+            } else if (humanChoice === 'Paper' && computerChoice === 'Scissors') {
+                alert('Oh no! Scissors beats Paper!'), computerScore++
+            } else if (humanChoice === 'Scissors' && computerChoice === 'Rock') {
+                alert('Oh no! Rock beats Scissors!'), computerScore++
+            }
+            }
+
+            
+
+            for (let i = 0; i < 5; i++){
+                const humanSelection = getHumanChoice()
+                const computerSelection = getComputerChoice()
+                playRound(humanSelection, computerSelection);
+            } 
+            alert('Your Score is ' + humanScore + '. The Computer Score is ' + computerScore + '.');
+        }
+
+        playGame()
+    </script>
+</body>
+</html>
